@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Рейтинг — IZGI MAP</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a class="logo" href="index.html">
+        <img src="assets/logo.svg" alt="IZGI MAP логотипі" />
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Басты бет</a>
+        <a href="map.html">Карта</a>
+        <a href="actions.html">Жақсылық жаса</a>
+        <a href="help.html">Көмек керек</a>
+        <a href="eco.html">Eco</a>
+        <a href="feed.html">Лента</a>
+        <a href="profile.html">Профиль</a>
+        <a href="rating.html">Рейтинг</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="card">
+          <h1>Рейтинг және мотивация</h1>
+          <p>Платформада қолданушылардың белсенділігін арттыру үшін ұпай, рейтинг және жетістік белгілері қарастырылған.</p>
+
+          <div class="grid-2" style="margin-top:22px;">
+            <div class="card rank-card">
+              <h3>Ең белсенді қолданушылар</h3>
+              <div class="list-clean" id="userRate"></div>
+            </div>
+
+            <div class="card rank-card">
+              <h3>Ең белсенді қалалар</h3>
+              <div class="list-clean" id="cityRate"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/rating.js"></script>
+</body>
+</html>
