@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <title>IZGI MAP — Интерактив карта</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+  <style>
+    body{
+      margin:0;
+      font-family: Arial;
+      background:#f6f8f4;
+    }
+
+    header{
+      padding:16px 24px;
+      background:white;
+      box-shadow:0 4px 10px rgba(0,0,0,0.05);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    h1{
+      font-size:20px;
+      margin:0;
+    }
+
+    .filters{
+      padding:12px 20px;
+      background:#fff;
+      display:flex;
+      gap:10px;
+      border-bottom:1px solid #eee;
+    }
+
+    select{
+      padding:8px 12px;
+      border-radius:10px;
+      border:1px solid #ddd;
+    }
+
+    #map{
+      height: calc(100vh - 120px);
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>🌍 IZGI MAP — Жақсылық картасы</h1>
+</header>
+
+<div class="filters">
+  <select id="typeFilter">
+    <option value="all">Барлығы</option>
+    <option value="eco">🌱 Экология</option>
+    <option value="social">❤️ Әлеуметтік</option>
+    <option value="volunteer">🤝 Волонтерлік</option>
+  </select>
+</div>
+
+<div id="map"></div>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+const map = L.map('map').setView([48.0196, 66.9237], 5);
+
+// карта слой
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© OpenStreetMap'
+}).addTo(map);
+
+// данные
+const points = [
+  {
+    city:"Астана",
+    type:"social",
+    title:"Қартқа көмектесу",
+    desc:"Азық-түлік жеткізілді",
+    lat:51.1694,
+    lng:71.4491
+  },
+  {
+    city:"Алматы",
+    type:"eco",
+    title:"Ағаш отырғызу",
+    desc:"15 ағаш отырғызылды",
+    lat:43.2220,
+    lng:76.8512
+  },
+  {
+    city:"Шымкент",
+    type:"volunteer",
+    title:"Кітап жинау",
+    desc:"Балаларға кітап берілді",
+    lat:42.3417,
+    lng:69.5901
+  }
+];
+
+// иконки
+const icons = {
+  eco: L.icon({
+    iconUrl:"https://cdn-icons-png.flaticon.com/512/2909/2909767.png",
+    iconSize:[30,30]
+  }),
+  social: L.icon({
+    iconUrl:"https://cdn-icons-png.flaticon.com/512/3176/3176293.png",
+    iconSize:[30,30]
+  }),
+  volunteer: L.icon({
+    iconUrl:"https://cdn-icons-png.flaticon.com/512/847/847969.png",
+    iconSize:[30,30]
+  })
+};
+
+let markers = [];
+
+function render(type="all"){
+  markers.forEach(m=>map.removeLayer(m));
+  markers=[];
+
+  points.forEach(p=>{
+    if(type!=="all" && p.type!==type) return;
+
+    const marker = L.marker([p.lat,p.lng],{
+      icon:icons[p.type]
+    }).addTo(map);
+
+    marker.bindPopup(`
+      <b>${p.title}</b><br>
+      ${p.desc}<br>
+      📍 ${p.city}
+    `);
+
+    markers.push(marker);
+  });
+}
+
+render();
+
+// фильтр
+document.getElementById("typeFilter").addEventListener("change",(e)=>{
+  render(e.target.value);
+});
+</script>
+
+</body>
+</html>
