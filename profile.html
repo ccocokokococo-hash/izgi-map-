@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Профиль — IZGI MAP</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a class="logo" href="index.html">
+        <img src="assets/logo.svg" alt="IZGI MAP логотипі" />
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Басты бет</a>
+        <a href="map.html">Карта</a>
+        <a href="actions.html">Жақсылық жаса</a>
+        <a href="help.html">Көмек керек</a>
+        <a href="eco.html">Eco</a>
+        <a href="feed.html">Лента</a>
+        <a href="profile.html">Профиль</a>
+        <a href="rating.html">Рейтинг</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="grid-2">
+          <div class="card profile-card">
+            <div class="icon-badge">👤</div>
+            <h1 id="profileName" style="font-size:38px; margin-bottom:8px;">Пайдаланушы</h1>
+            <p class="muted">Қала: <span id="profileCity"></span></p>
+
+            <div class="kpi-row" style="margin-top:18px;">
+              <div class="card kpi">
+                <strong id="profilePoints">0</strong>
+                <span class="muted">Ұпай</span>
+              </div>
+              <div class="card kpi">
+                <strong id="deedsDone">0</strong>
+                <span class="muted">Жақсылық саны</span>
+              </div>
+            </div>
+
+            <h3 style="margin-top:18px;">Белгілер</h3>
+            <div class="badges" id="badgeWrap"></div>
+          </div>
+
+          <div class="card profile-card">
+            <h3>Белсенділік құрылымы</h3>
+
+            <div style="margin-top:16px;">
+              <div class="list-clean">
+                <div class="row">
+                  <div><strong>Экология</strong></div>
+                  <div><span id="ecoDone">0</span> әрекет</div>
+                </div>
+              </div>
+              <div class="progress"><span id="ecoProgress"></span></div>
+            </div>
+
+            <div style="margin-top:16px;">
+              <div class="list-clean">
+                <div class="row">
+                  <div><strong>Әлеуметтік көмек</strong></div>
+                  <div><span id="socialDone">0</span> әрекет</div>
+                </div>
+              </div>
+              <div class="progress"><span id="socialProgress"></span></div>
+            </div>
+
+            <div style="margin-top:16px;">
+              <div class="list-clean">
+                <div class="row">
+                  <div><strong>Еріктілік</strong></div>
+                  <div><span id="volunteerDone">0</span> әрекет</div>
+                </div>
+              </div>
+              <div class="progress"><span id="volunteerProgress"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>
